@@ -3,17 +3,17 @@
 @section('header')
 <ul>
     <li class="menu_iconb">
-        <a href="#"><img style="margin-right: 15px;" src="icon/1.png" alt="#" />783852314</a>
+        <a href="{{route('auth.login')}}"><img style="margin-right: 15px;" src="icon/1.png" alt="#" />783852314</a>
     </li>
     <li class="menu_iconb">
-        <a role="button" type="button" data-toggle="modal" data-target="#exampleModalCenter" href="#">Connecter <img style="margin-right: 15px;" src="icon/5.png" alt="#" /> </a>
+        <a href="{{route('auth.login')}}">Connecter <img style="margin-right: 15px;" src="icon/5.png" alt="#" /> </a>
     </li>
     <li class="menu_iconb">
-        <a href="#">S'inscrire<img style="margin-left: 15px;" src="icon/6.png" alt="#" /></a>
+        <a href="{{route('auth.register')}}">S'inscrire<img style="margin-left: 15px;" src="icon/6.png" alt="#" /></a>
     </li>
-    {{-- <li class="tytyu">
-        <a href="#"> <img style="margin-right: 15px;" src="icon/2.png" alt="#" /></a>
-    </li> --}}
+    <li class="tytyu">
+        <a href="{{route('auth.login')}}"> <img style="margin-right: 15px;" src="icon/2.png" alt="#" /></a>
+    </li>
     <li class="menu_iconb">
         <a href="#"><img style="margin-right: 15px;" src="icon/3.png" alt="#" /></a>
     </li>
@@ -71,38 +71,16 @@
     <div id="brand"  class="brand-bg">
         <h3>Nouveaux vêtements</h3>
         <div class="row">
+            @foreach ($brands as $brand)
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
                 <div class="brand-box">
-                    <h5>Vente</h5>
-                    <i><img src="icon/p1.png"/>
-                </i>
-                    <h4>Prix <span class="nolmal">3000FCFA</span></h4>
-
+                    <i><img src="{{ asset('storage/' . $brand->photo) }}"/></i>
+                    <h4>Prix <span class="nolmal">{{ $brand->price }} FCFA</span></h4>
                 </div>
                 <a class="buynow" href="#">Ajouter panier</a>
                 <a class="buynow" href="#">Acheter</a>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                <div class="brand-box">
-                    <i><img src="icon/p2.png"/></i>
-                    <h4>Price $<span class="nolmal">100</span></h4>
-                </div>
-                <a class="buynow" href="#">Buy now</a>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                <div class="brand-box">
-                    <i><img src="icon/p1.png"/></i>
-                    <h4>Price $<span class="nolmal">100</span></h4>
-                </div>
-                <a class="buynow" href="#">Buy now</a>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                <div class="brand-box">
-                    <i><img src="icon/p4.png"/></i>
-                    <h4>Price $<span class="nolmal">100</span></h4>
-                </div>
-                <a class="buynow" href="#">Buy now</a>
-            </div>
+            </div>  
+            @endforeach
         </div>
     </div>
     <a class="seemore" href="#">Voir plus</a>
@@ -110,42 +88,21 @@
 
 @section('shoes')
     <div id="shoes" class="shoes-bg">
-        <h3>New shoes</h3>
+        <h3>Nouvelles Chaussures</h3>
         <div class="row">
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                <div class="shoes-box">
-                    <h5>Sale</h5>
-                    <i><img src="icon/s1.png"/>
-                </i>
-                    <h4>Price $<span class="nolmal">100</span></h4>
-
-                </div>
-                <a class="buynow" href="#">Buy now</a>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                <div class="shoes-box">
-                    <i><img src="icon/s2.png"/></i>
-                    <h4>Price $<span class="nolmal">100</span></h4>
-                </div>
-                <a class="buynow" href="#">Buy now</a>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                <div class="shoes-box">
-                    <i><img src="icon/s3.png"/></i>
-                    <h4>Price $<span class="nolmal">100</span></h4>
-                </div>
-                <a class="buynow" href="#">Buy now</a>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                <div class="shoes-box">
-                    <i><img src="icon/s4.png"/></i>
-                    <h4>Price $<span class="nolmal">100</span></h4>
-                </div>
-                <a class="buynow" href="#">Buy now</a>
-            </div>
+            @foreach ($shoes as $shoe)
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
+                    <div class="shoes-box">
+                        <i><img src="{{ asset('storage/' . $shoe->photo) }}"/></i>
+                        <h4>Prix <span class="nolmal">{{ $shoe->price }} FCFA</span></h4>
+                    </div>
+                    <a class="buynow" href="#">Ajouter panier</a>
+                    <a class="buynow" href="#">Acheter</a>
+                </div>  
+            @endforeach
         </div>
     </div>
-    <a class="seemore" href="#">See more</a>
+    <a class="seemore" href="#">Voir plus</a>
 @endsection
 
 @section('bijoux')
@@ -153,42 +110,21 @@
         <div class="row">
             <div class="col-md-12">
                 <div id="jewellery" class="Jewellery-bg">
-                    <h3>New Jewellery</h3>
+                    <h3>Nouveaux bijoux</h3>
                     <div class="row">
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                            <div class="Jewellery-box">
-                                <h5>Sale</h5>
-                                <i><img src="icon/j1.png"/>
-                                </i>
-                                <h4>Price $<span class="nolmal">100</span></h4>
-
-                            </div>
-                            <a class="buynow" href="#">Buy now</a>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                            <div class="Jewellery-box">
-                                <i><img src="icon/j2.png"/></i>
-                                <h4>Price $<span class="nolmal">100</span></h4>
-                            </div>
-                            <a class="buynow" href="#">Buy now</a>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                            <div class="Jewellery-box">
-                                <i><img src="icon/j3.png"/></i>
-                                <h4>Price $<span class="nolmal">100</span></h4>
-                            </div>
-                            <a class="buynow" href="#">Buy now</a>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                            <div class="Jewellery-box">
-                                <i><img src="icon/j4.png"/></i>
-                                <h4>Price $<span class="nolmal">100</span></h4>
-                            </div>
-                            <a class="buynow" href="#">Buy now</a>
-                        </div>
+                        @foreach ($bijoux as $bijou)
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
+                                <div class="Jewellery-box">
+                                    <i><img src="{{ asset('storage/' . $bijou->photo) }}"/></i>
+                                    <h4>Prix <span class="nolmal">{{ $bijou->price }} FCFA</span></h4>
+                                </div>
+                                <a class="buynow" href="#">Ajouter panier</a>
+                                <a class="buynow" href="#">Acheter</a>
+                            </div>  
+                        @endforeach
                     </div>
                 </div>
-                <a class="seemore" href="#">See more</a>
+                <a class="seemore" href="#">Voir plus</a>
             </div>
         </div>
     </div>
@@ -237,63 +173,3 @@
     </div>
 </div>
 @endsection
-
-{{-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Votre mail:</label>
-              <input type="email" class="form-control" id="recipient-name">
-            </div>
-            <div class="form-group">
-              <label for="message-text" class="col-form-label">Mot de passe:</label>
-              <input type="password" class="form-control" id="message-text">
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Send message</button>
-        </div>
-      </div>
-    </div>
-  </div> --}}
-
-   
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <form>
-                <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Votre mail:</label>
-                  <input type="email" class="form-control" id="recipient-name">
-                </div>
-                <div class="form-group">
-                  <label for="message-text" class="col-form-label">Mot de passe:</label>
-                  <input type="password" class="form-control" id="message-text">
-                </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>

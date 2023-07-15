@@ -15,8 +15,11 @@ class AuthCheck
      * @return mixed
      */
     public function handle(Request $request, Closure $next) {
-        if(!session()->has('LoggedUser') && ($request->path() !='auth/login')){
-            return redirect('auth/login')->with('fail','Vous devez vous connecter d\'abord');
+        if (session()->has('LoggedUser')) {
+
+            if ($request->path() == 'auth/login' || $request->path() == 'auth/register' || $request->path() == '/'){
+                return back();
+            }
         }
     
         return $next($request)->header('Cache-Control','no-cache, no-store, max-age=0, must-revalidate')
