@@ -11,7 +11,7 @@ Tech Stack:
 
 Front-End: HTML, CSS, JavaScript
 Back-End: Laravel (PHP)
-Database: [Mention database technology used]
+Database: MysQl
 Feel free to explore the project's source code and folder structure. This endeavor highlights my dedication to mastering web development concepts in a real-world scenario. Your feedback and suggestions are highly appreciated!
 
 #WebDevelopment #ECommerce #LaravelProject #StudentWork
